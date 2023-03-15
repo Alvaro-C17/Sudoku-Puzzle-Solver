@@ -57,6 +57,7 @@ bool solveSudoku(int board[N][N]) {
 
 // Print the Sudoku board to the console
 void printBoard(int board[N][N]) {
+    cout << "\n Puzzle Solution" << endl;
     for (int row = 0; row < N; row++) {
         for (int col = 0; col < N; col++) {
             cout << board[row][col] << " ";
@@ -81,29 +82,15 @@ void printBoard(int board[N][N]) {
 // }
 
 int main() {
-    // int board[N][N];
-    // const char* filename = "puzzle.txt"; // Input puzzle file name
-    // if (!readBoardFromFile(filename, board)) {
-    //     cout << "Error reading puzzle file." << endl;
-    //     return 1;
-    // }
-    // if (solveSudoku(board)) {
-    //     cout << "Solved puzzle:" << endl;
-    //     printBoard(board);
-    // } else {
-    //     cout << "No solution found." << endl;
-    // }
-    // return 0;
-    
     int puzzle[9][9];
-
+    // Prompt the user to input their puzzle
+    cout << "Enter the Sudoku puzzle, row by row, with 0's representing empty cells:" << endl;
     // Read in puzzle from standard input
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
             std::cin >> puzzle[i][j];
         }
     }
-
     // Solve the puzzle
     if (solveSudoku(puzzle)) {
         // Print the solution
