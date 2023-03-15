@@ -65,33 +65,52 @@ void printBoard(int board[N][N]) {
     }
 }
 
-// Read a Sudoku puzzle from a file
-bool readBoardFromFile(const char* filename, int board[N][N]) {
-    ifstream inFile(filename);
-    if (!inFile.is_open()) {
-        return false; // File not found or cannot be opened
-    }
-    for (int row = 0; row < N; row++) {
-        for (int col = 0; col < N; col++) {
-            inFile >> board[row][col];
-        }
-    }
-    inFile.close();
-    return true;
-}
+// // Read a Sudoku puzzle from a file
+// bool readBoardFromFile(const char* filename, int board[N][N]) {
+//     ifstream inFile(filename);
+//     if (!inFile.is_open()) {
+//         return false; // File not found or cannot be opened
+//     }
+//     for (int row = 0; row < N; row++) {
+//         for (int col = 0; col < N; col++) {
+//             inFile >> board[row][col];
+//         }
+//     }
+//     inFile.close();
+//     return true;
+// }
 
 int main() {
-    int board[N][N];
-    const char* filename = "puzzle.txt"; // Input puzzle file name
-    if (!readBoardFromFile(filename, board)) {
-        cout << "Error reading puzzle file." << endl;
-        return 1;
+    // int board[N][N];
+    // const char* filename = "puzzle.txt"; // Input puzzle file name
+    // if (!readBoardFromFile(filename, board)) {
+    //     cout << "Error reading puzzle file." << endl;
+    //     return 1;
+    // }
+    // if (solveSudoku(board)) {
+    //     cout << "Solved puzzle:" << endl;
+    //     printBoard(board);
+    // } else {
+    //     cout << "No solution found." << endl;
+    // }
+    // return 0;
+    
+    int puzzle[9][9];
+
+    // Read in puzzle from standard input
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            std::cin >> puzzle[i][j];
+        }
     }
-    if (solveSudoku(board)) {
-        cout << "Solved puzzle:" << endl;
-        printBoard(board);
+
+    // Solve the puzzle
+    if (solveSudoku(puzzle)) {
+        // Print the solution
+        printBoard(puzzle);
     } else {
-        cout << "No solution found." << endl;
+        std::cout << "No solution found.\n";
     }
+
     return 0;
 }
